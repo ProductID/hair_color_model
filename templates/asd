@@ -1,0 +1,90 @@
+<script>
+$(document).ready(function() {
+
+    var sync3 = $("#sync3");
+    var sync4 = $("#sync4");
+    var slidesPerPage = 4;
+    var syncedSecondary = true;
+
+    sync3.owlCarousel({
+        items: 1,
+        slideSpeed: 2000,
+        nav: true,
+        autoplay: false,
+        dots: true,
+        loop: true,
+        responsiveRefreshRate: 200,
+        navText:  ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+    }).on('changed.owl.carousel', syncPosition4);
+
+    sync4
+        .on('initialized.owl.carousel', function() {
+            sync4.find(".owl-item").eq(1).addClass("current");
+        })
+        .owlCarousel({
+            items: slidesPerPage,
+            dots: false,
+            nav: false,
+            smartSpeed: 200,
+            slideSpeed: 500,
+            slideBy: slidesPerPage,
+            responsiveRefreshRate: 100,
+            afterMove: function (elem) {
+      var current = this.currentItem;
+      var src = elem.find(".owl-item").eq(current).find("img").attr('src');
+      console.log('Image current is ' + src);
+    }
+        }).on('changed.owl.carousel', syncPosition3);
+
+    function syncPosition4(el) {
+        var count = el.item.count + 2;
+        var current = Math.round(el.item.index - (el.item.count / 2) - .5);
+
+        if (current < 1) {
+            current = count;
+        }
+        if (current > count) {
+            current = 1;
+        }
+
+        //end block
+
+        sync4
+            .find(".owl-item")
+            .removeClass("current")
+            .eq(current)
+            .addClass("current");
+        var onscreen = sync4.find('.owl-item.active').length + 2;
+        var start = sync4.find('.owl-item.active').first().index();
+        var end = sync4.find('.owl-item.active').last().index();
+
+        if (current > end) {
+            sync4.data('owl.carousel').to(current, 100, true);
+        }
+        if (current < start) {
+            sync4.data('owl.carousel').to(current - onscreen, 100, true);
+        }
+    }
+
+    function syncPosition3(el) {
+        if (syncedSecondary) {
+            var number = el.item.index;
+            sync3.data('owl.carousel').to(number, 100, true);
+        }
+    }
+
+    sync4.on("click", ".owl-item", function(e) {
+        e.preventDefault();
+        var number = $(this).index();
+        sync3.data('owl.carousel').to(number, 300, true);
+    });
+});
+var owl = $(".owl-carousel");
+$(document).ready(function(){$(".selected-img").val("");})
+owl.on('changed.owl.carousel',function(property){
+    var current = property.item.index;
+    var src = $(property.target).find(".owl-item").eq(current).find("img").attr('src');
+    $(".selected-img").val(src);
+});
+
+</script>

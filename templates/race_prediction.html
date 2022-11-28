@@ -1,0 +1,323 @@
+{% load static %}
+{% include 'header.html' %}
+<section class="celebrity-makeover">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 wtdemo-text">
+                <h1><strong>Detect ethnicity by photo</strong></h1>
+<!--                <p>Give yourself a <i>Virtual Makeover</i> with your favorite celebrity hairstyles, makeup and-->
+<!--                    accessories.</p>-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="heading3 text-center">Choose Image</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="wtdemo-form">
+                    <h4>Your Image</h4>
+                    {% if src_image_1 %}
+                    <img id="wtdemo-image" src="media/{{src_image_1}}" alt="webtunix Demo"
+                         class="wtimg face-img"/>
+                    {% else %}
+<!--                    <img id="wtdemo-image" src="{% static '' %}assets/images/data/female/024539.jpg"-->
+<!--                         alt="webtunix Demo"-->
+<!--                         class="wtimg face-img"/>-->
+                    <div class="w3-content w3-display-container">
+                      <img class="mySlides" id="wtdemo-image" src="{% static '' %}assets/images/colors_img/age_front.png" style="width:350px; height: 300px">
+
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+             <div class="col-md-2"></div>
+<!--            <div class="col-md-4">-->
+<!--                <div class="wtdemo-form">-->
+<!--                    <h4>Merging Image</h4>-->
+<!--                    <div id="sync1" class="owl-carousel owl-theme">-->
+<!--                        <div class="item">-->
+
+<!--                            {% if ref_image_1 %}-->
+<!--                            <img src="{{ref_image_1}}" alt="Face 3D" id="wtdemo-ref-image" class="face-img"/>-->
+
+<!--                            {% else %}-->
+<!--                            <img src="{% static '' %}assets/images/colors_img/black.jpg"-->
+<!--                                                       alt="Female" class="face-img"/>-->
+
+
+<!--                            {% endif %}-->
+<!--                        </div>-->
+<!--                        <div class="item"><img src="{% static '' %}assets/images/colors_img/black.jpg" alt="Face 3D" id="wtdemo-ref-image"-->
+<!--                    class="face-img"></div>-->
+<!--                        <div class="item"><img src="{% static '' %}assets/images/colors_img/black.jpg"-->
+<!--                                               alt="Female" class="face-img"/></div>-->
+<!--                        <div class="item"><img src="{% static '' %}assets/images/colors_img/blonde2.png"-->
+<!--                                               alt="Female" class="face-img"/></div>-->
+<!--                        <div class="item"><img src="{% static '' %}assets/images/colors_img/brown.jpeg"-->
+<!--                                               alt="Female" class="face-img"/></div>-->
+<!--&lt;!&ndash;                        <div class="item"><img src="{% static '' %}assets/images/data/female/COLORCODE4.png"&ndash;&gt;-->
+<!--&lt;!&ndash;                                               alt="Female" class="face-img"/></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="item"><img src="{% static '' %}assets/images/data/female/COLORCODE5.png"&ndash;&gt;-->
+<!--&lt;!&ndash;                                               alt="Female" class="face-img"/></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="item"><img src="{% static '' %}assets/images/data/female/COLORCODE6.png"&ndash;&gt;-->
+<!--&lt;!&ndash;                                               alt="Female" class="face-img"/></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="item"><img src="{% static '' %}assets/images/data/female/COLORCODE7.png"&ndash;&gt;-->
+<!--&lt;!&ndash;                                               alt="Female" class="face-img"/></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="item"><img src="{% static '' %}assets/images/data/female/COLORCODE8.png"&ndash;&gt;-->
+<!--&lt;!&ndash;                                               alt="Female" class="face-img"/></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="item"><img src="{% static '' %}assets/images/data/female/COLORCODE9.png"&ndash;&gt;-->
+<!--&lt;!&ndash;                                               alt="Female" class="face-img"/></div>&ndash;&gt;-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--            </div>-->
+            <div class="col-md-5">
+                <div class="wtdemo-form">
+                    <h4>Result</h4>
+                    <div id="aSide">
+                    </div>
+                    <div class="">
+                        {% if imggggg %}
+                        <img src="{{imggggg}}" alt="" class="face-img">
+                        {% else %}
+                        <img src="{% static '' %}assets/images/upload-demo.jpg" alt="Celebrity Makeover"
+                             id="wtdemo-ref-image_"
+                             class="face-img">
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12 text-center">
+                <form method="post" enctype="multipart/form-data" id="celebrity_form">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input  name="src_image" type="file" id="wtdemo-upload"
+                                       class="custom-file-input"/>
+                                <input  name="src_image_slider" type="hidden"
+                                       id="slider-file-input"/>
+                            </div>
+                            <script>
+
+                                  setInterval(function(){
+                                  var imgSrc = $('.w3-content > img').attr('src');
+                                  document.getElementById("slider-file-input").value =  imgSrc;
+                                }, 3000);
+
+                                </script>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <button class="btn form-btn" type="submit">Get Results</button>
+                            </div>
+                            <!--<input required name="ref_image" type="file" id="ref-img-upload"/>-->
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{{imggggg}}" download class="btn form-btn mt-1">Download</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="makeover-benefits">
+    <div class="container">
+        <div class="row text-center">
+            <h3>Benefits</h3>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <div class="makeover-benefits-box">
+                    <img src="{% static '' %}assets/images/icons/makeover-icon.png" class="makeover-icon"/>
+                    <h5><strong>Natural and Practical Results</strong></h5>
+                    <p>With this model , you will get 100% Natural and Practical Results.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="makeover-benefits-box">
+                    <img src="{% static '' %}assets/images/icons/makeover-icon.png" class="makeover-icon"/>
+                    <h5><strong>Unlimited Image Uploads</strong></h5>
+                    <p>No restriction on image uploads. You can upload any number of images.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="makeover-benefits-box">
+                    <img src="{% static '' %}assets/images/icons/makeover-icon.png" class="makeover-icon"/>
+                    <h5><strong>Get Fast Results</strong></h5>
+                    <p>You will get fast results , can also download result image.</p>
+                </div>
+            </div>
+            <h6 class="note"><strong>Note : </strong>Try to expose your Hair to get better idea of Hair Color.</h6>
+        </div>
+    </div>
+</section>
+{% if imggggg %}
+<div class="modal fade" tabindex="-1" role="dialog" id="celebrity_modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">View Results</h4><button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+      <div class="modal-body">
+         <img src="{{imggggg}}" alt="Celebrity Makeover">
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $('#celebrity_modal').modal('show');
+  e.preventDefault();
+</script>
+{% endif %}
+<script>
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $('#wtdemo-image').attr('src', e.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+$("#wtdemo-upload").change(function() {
+  readURL(this);
+});
+
+function readURL_1(input) {
+  if (input.files && input.files[0]) {
+    var reader_1 = new FileReader();
+    reader_1.onload = function(e) {
+      $('#wtdemo-ref-image').attr('src', e.target.result);
+    }
+    reader_1.readAsDataURL(input.files[0]);
+  }
+}
+$("#ref-img-upload").change(function() {
+  readURL_1(this);
+});
+
+
+</script>
+
+
+<script src="{% static '' %}assets/js/owl.carousel.min.js"></script>
+<script>
+$(document).ready(function() {
+
+    var sync1 = $("#sync1");
+    var sync2 = $("#sync2");
+    var slidesPerPage = 4;
+    var syncedSecondary = true;
+
+    sync1.owlCarousel({
+        items: 1,
+        slideSpeed: 2000,
+        nav: true,
+        autoplay: false,
+        dots: true,
+        loop: true,
+        responsiveRefreshRate: 200,
+        navText:  ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+    }).on('changed.owl.carousel', syncPosition);
+
+    sync2
+        .on('initialized.owl.carousel', function() {
+            sync2.find(".owl-item").eq(1).addClass("current");
+        })
+        .owlCarousel({
+            items: slidesPerPage,
+            dots: false,
+            nav: false,
+            smartSpeed: 200,
+            slideSpeed: 500,
+            slideBy: slidesPerPage,
+            responsiveRefreshRate: 100,
+            afterMove: function (elem) {
+      var current = this.currentItem;
+      var src = elem.find(".owl-item").eq(current).find("img").attr('src');
+      console.log('Image current is ' + src);
+    }
+        }).on('changed.owl.carousel', syncPosition2);
+
+    function syncPosition(el) {
+        var count = el.item.count + 2;
+        var current = Math.round(el.item.index - (el.item.count / 2) - .5);
+
+        if (current < 1) {
+            current = count;
+        }
+        if (current > count) {
+            current = 1;
+        }
+
+        //end block
+
+        sync2
+            .find(".owl-item")
+            .removeClass("current")
+            .eq(current)
+            .addClass("current");
+        var onscreen = sync2.find('.owl-item.active').length + 2;
+        var start = sync2.find('.owl-item.active').first().index();
+        var end = sync2.find('.owl-item.active').last().index();
+
+        if (current > end) {
+            sync2.data('owl.carousel').to(current, 100, true);
+        }
+        if (current < start) {
+            sync2.data('owl.carousel').to(current - onscreen, 100, true);
+        }
+    }
+
+    function syncPosition2(el) {
+        if (syncedSecondary) {
+            var number = el.item.index;
+            sync1.data('owl.carousel').to(number, 100, true);
+        }
+    }
+
+    sync2.on("click", ".owl-item", function(e) {
+        e.preventDefault();
+        var number = $(this).index();
+        sync1.data('owl.carousel').to(number, 300, true);
+    });
+});
+var owl = $(".owl-carousel");
+$(document).ready(function(){$(".selected-img").val("");})
+owl.on('changed.owl.carousel',function(property){
+    var current = property.item.index;
+    var src = $(property.target).find(".owl-item").eq(current).find("img").attr('src');
+    $(".selected-img").val(src);
+});
+
+</script>
+
+#slideshow
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";
+}
+</script>
+
+{% include 'footer.html' %}
