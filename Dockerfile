@@ -1,20 +1,37 @@
 # Must use a Cuda version 11+
-FROM pytorch/pytorch:1.11.0-cuda11.3-cudnn8-runtime
-
+FROM python:3.8.10
+FROM pytorch/pytorch:1.13.0-cuda11.6-cudnn8-runtime
+#FROM nvidia/cuda:11.0-base
 WORKDIR /
-
+ADD / .
 # Install git
 RUN apt-get update && apt-get install -y git
+RUN apt install -y gcc clang clang-tools cmake python3
+RUN apt install nvidia-cuda-toolkit -y
+
 
 # Install python packages
 RUN pip3 install --upgrade pip
-ADD requirements.txt req_new.txt
-RUN pip3 install -r requirements.txt
+RUN pip3 install dbus-next
+RUN apt-get -y install cmake
+RUN pip3 install pyyaml==5.4.1
+ADD req_new.txt req_new.txt
+RUN pip3 install -r req_new.txt
+
+
+#RUN cd moviepy
+#CMD python3 setup.py install
+#RUN cd ..
+# RUN git clone https://github.com/zurcnilva213/moviepy
+
+# RUN pip3 install torch==1.13.0+cu116 torchvision==0.13.1+cu116 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu116
+RUN pip3 install torch==1.12.1+cu116 torchvision==0.13.1+cu116 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu116
+RUN pip3 install boto3
 
 # We add the banana boilerplate here
 ADD server.py .
 
-# Add your model weight files 
+# Add your model weight files
 # (in this case we have a python script)
 ADD download.py .
 RUN python3 download.py
