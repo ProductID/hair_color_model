@@ -19,11 +19,6 @@ ADD req_new.txt req_new.txt
 RUN pip3 install -r req_new.txt
 
 
-#RUN cd moviepy
-#CMD python3 setup.py install
-#RUN cd ..
-# RUN git clone https://github.com/zurcnilva213/moviepy
-
 # RUN pip3 install torch==1.13.0+cu116 torchvision==0.13.1+cu116 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu116
 RUN pip3 install torch==1.12.1+cu116 torchvision==0.13.1+cu116 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu116
 RUN pip3 install boto3
@@ -34,7 +29,7 @@ ADD server.py .
 # Add your model weight files
 # (in this case we have a python script)
 ADD download.py .
-RUN python3 download.py
+#RUN python3 download.py
 
 
 # Add your custom app code, init() and inference()
