@@ -3,7 +3,7 @@ import os
 from Barbershop.models.Embedding import Embedding
 from Barbershop.models.Alignment import Alignment
 from Barbershop.models.Blending import Blending
-
+import pysftp
 # from PIL import Image
 # import urllib.request
 # import requests
@@ -64,5 +64,21 @@ def inference(args):
     print(im_path2, 'llll------------------------------2')
     print(im_path3, 'llll---------------------------3')
     print(output_image_path, 'llll---------------------4')
+
+    # unique name pending-----------------------------------
+
+
+    srv = pysftp.Connection(host="3.70.151.70", username="ubuntu", password="sd9809$%^")
+
+    #  upload file
+    with srv.cd('/home/ubuntu/uploadimages'):  # chdir to public
+        srv.put("output_image_path")  # upload file to nodejs/
+
+    # download file
+    # srv.get("/home/ubuntu/uploadimages/christopher-campbell-rDEOVtE7vOs-unsplash.jpg",
+    #         "christopher-campbell-rDEOVtE7vOs-unsplash.jpg")
+
+    # Closes the connection
+    srv.close()
 
     return output_image_path
