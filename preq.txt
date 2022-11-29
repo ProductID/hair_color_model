@@ -1,0 +1,9 @@
+fastapi
+Ninja
+gdown
+scikit-image
+IPython
+opencv-python
+pysftp
+uvicorn
+python-multipart
