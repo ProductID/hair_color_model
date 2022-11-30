@@ -9,7 +9,6 @@ RUN apt-get update && apt-get install -y git
 RUN apt install -y gcc clang clang-tools cmake python3
 RUN apt install nvidia-cuda-toolkit -y
 RUN apt install ninja-build -y
-RUN apt install build-essential -y
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 8 -y
 RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 8
 
