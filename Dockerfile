@@ -8,6 +8,7 @@ ADD / .
 RUN apt-get update && apt-get install -y git
 RUN apt install -y gcc clang clang-tools cmake python3
 RUN apt install nvidia-cuda-toolkit -y
+RUN apt install ninja-build
 
 
 # Install python packages
