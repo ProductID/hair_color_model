@@ -1,6 +1,6 @@
 # Must use a Cuda version 11+
 FROM python:3.8.10
-FROM torch/torch==1.12.1+cu116-cuda11.6-cudnn8-runtime
+#FROM torch/torch==1.12.1+cu116-cuda11.6-cudnn8-runtime
 #FROM nvidia/cuda:11.0-base
 WORKDIR /
 ADD / .
@@ -27,7 +27,7 @@ ADD server.py .
 
 # Add your model weight files
 # (in this case we have a python script)
-#ADD download.py .
+ADD download.py .
 #RUN python3 download.py
 
 
