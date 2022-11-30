@@ -1,6 +1,6 @@
 # Must use a Cuda version 11+
 FROM python:3.8.10
-FROM pytorch/pytorch:1.13.0-cuda11.6-cudnn8-runtime
+FROM torch/torch==1.12.1+cu116-cuda11.6-cudnn8-runtime
 #FROM nvidia/cuda:11.0-base
 WORKDIR /
 ADD / .
@@ -9,7 +9,6 @@ RUN apt-get update && apt-get install -y git
 RUN apt install -y gcc clang clang-tools cmake python3
 RUN apt install nvidia-cuda-toolkit -y
 RUN apt install ninja-build -y
-RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 8 -y
 
 # Install python packages
 RUN pip3 install --upgrade pip
