@@ -7,3 +7,6 @@ opencv-python
 pysftp
 uvicorn
 python-multipart
+dlib
+django
+matplotlib
