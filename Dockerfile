@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y git
 RUN apt install -y gcc clang clang-tools cmake python3
 RUN apt install nvidia-cuda-toolkit -y
 RUN apt install ninja-build
-
+RUN apt install build-essential
+RUN apt -y install g++-7 g++-8 g++-9 g++-10
 
 # Install python packages
 RUN pip3 install --upgrade pip
