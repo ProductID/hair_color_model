@@ -22,6 +22,7 @@ def print_square(num,ddd):
         """
         function to print square of given num
         """
+        print("------------------in-multiprocessing--------------")
         # print("Square: {}".format(num * num)
         # global ddd
         # set_start_method('spawn')
