@@ -31,7 +31,7 @@ def print_square(num,ddd):
 
 @app.post("/")
 async def inference(request: Request):
-    new_d = await request.form()
+    new_d = await request.json()
     print(new_d,"---------data-")
     new_d = jsonable_encoder(new_d)
     input_dir = str(new_d.get("input_dir", "Barbershop/input/face"))
