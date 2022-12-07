@@ -85,8 +85,11 @@ async def inference(request: Request):
                 'ce_lambda': ce_lambda, 'style_lambda': style_lambda,
                 'align_steps1': align_steps1, 'align_steps2': align_steps2, 'face_lambdat': face_lambdat,
                 'hair_lambda': hair_lambda, 'hair_lambda': hair_lambda, 'blend_steps': blend_steps}
+    from datetime import datetime
+    now = datetime.now()
+    print(now)
 
-    print(input_dir,"------------------")
+    print(input_dir,"------------------",now)
     global ddd
     ddd = giveData(new_d)
 
