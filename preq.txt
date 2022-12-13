@@ -7,9 +7,3 @@ opencv-python
 pysftp
 uvicorn
 python-multipart
-dlib
-django
-matplotlib
-django-utils-six
-deepface
-ray
