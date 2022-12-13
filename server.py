@@ -5,7 +5,12 @@ import app as u_app
 from app import inference
 from give_data_fast import giveData
 import uvicorn
+from datetime import datetime
 
+
+now = datetime.now()
+
+print('now=@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@',now)
 
 from fastapi.responses import JSONResponse
 import os
@@ -22,7 +27,6 @@ def print_square(num,ddd):
         """
         function to print square of given num
         """
-        print("------------------in-multiprocessing--------------")
         # print("Square: {}".format(num * num)
         # global ddd
         # set_start_method('spawn')
@@ -32,7 +36,8 @@ def print_square(num,ddd):
 @app.post("/")
 async def inference(request: Request):
     new_d = await request.json()
-    print(new_d,"---------data-")
+    print('vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv',new_d)
+    # print(da)
     new_d = jsonable_encoder(new_d)
     input_dir = str(new_d.get("input_dir", "Barbershop/input/face"))
     output_dir = str(new_d.get("output_dir", "Barbershop/output_dir"))
@@ -85,14 +90,12 @@ async def inference(request: Request):
                 'ce_lambda': ce_lambda, 'style_lambda': style_lambda,
                 'align_steps1': align_steps1, 'align_steps2': align_steps2, 'face_lambdat': face_lambdat,
                 'hair_lambda': hair_lambda, 'hair_lambda': hair_lambda, 'blend_steps': blend_steps}
-    from datetime import datetime
-    now = datetime.now()
-    print(now)
 
-    print(input_dir,"------------------",now)
+    print(input_dir,"------------------")
     global ddd
     ddd = giveData(new_d)
 
+    print("now =##################################", now)
     print(ddd)
     p1 = multiprocessing.Process(target=print_square, args=(10, ddd))
     p1.start()
@@ -108,5 +111,7 @@ async def inference(request: Request):
 
 if __name__ == "__main__":
     uvicorn.run("server:app", port=8000)
+
+
 
 

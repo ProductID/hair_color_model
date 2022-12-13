@@ -72,7 +72,7 @@ def inference(args):
 
     #  upload file
     with srv.cd('/home/ubuntu/uploadimages'):  # chdir to public
-        srv.put("output_image_path")  # upload file to nodejs/
+        srv.put(output_image_path)  # upload file to nodejs/
 
     # download file
     # srv.get("/home/ubuntu/uploadimages/christopher-campbell-rDEOVtE7vOs-unsplash.jpg",

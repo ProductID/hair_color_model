@@ -18,10 +18,10 @@ ref_image='11.png'
 # ref_image='https://github.com/manjinderwebtunix/images_data/blob/main/blonde_ref.png'
 
 
-new_d = {'im_path1': input_image,'im_path2': input_image, 'im_path3': ref_image }
+#new_d = {"im_path1": input_image,"im_path2": input_image, "im_path3": ref_image }
+new_d = {"im_path1": "18.png","im_path2": "18.png", "im_path3": "11.png" }
 # response = requests.post('http://3.120.107.31/hair_color_api', data=new_d,verify=False)
 # response = requests.post('http://127.0.0.1:8000/hair_color_api', data=new_d, verify=False)
-response = requests.post('http://127.0.0.1:8000/', data=new_d, verify=False)
+response = requests.post('http://127.0.0.1:8000/', json=new_d, verify=False)
 print(response)
-print(response.json)
-print(response.json())
+
